@@ -7,6 +7,24 @@ from sklearn.metrics import mean_squared_error
 from ashrae.blenders import load_preds, GeneralizedMeanBlender
 from ashrae.utils import OUTPUT_PATH, load_data, rmsle, timer
 
+FILES_TO_BLEND = [
+    "cb-split_meter-no_normalization.npy", 
+    "cb-split_meter-target_normalization.npy", 
+    "cb-split_primary_use-no_normalization.npy", 
+    "cb-split_primary_use-target_normalization.npy", 
+    "cb-split_site-target_normalization.npy", 
+    "lgb-split_meter-no_normalization.npy", 
+    "lgb-split_meter-target_normalization.npy", 
+    "lgb-split_site-no_normalization.npy", 
+    "lgb-split_site-target_normalization.npy", 
+    "mlp-split_meter-no_normalization.npy", 
+    "mlp-split_meter-target_normalization.npy", 
+    "submission_meter.csv", 
+    "submission_kfold.csv", 
+    "submission_cleanup.csv", 
+    "submission_kernel_corrected_half_and_half.csv", 
+    "submission_kernel_ashrae_kfold_lightgbm_without_leak_1-08.csv", 
+]
 
 if __name__ == "__main__":
     """
@@ -21,9 +39,8 @@ if __name__ == "__main__":
 
     # load predictions
     with timer("load predictions"):
-        preds_matrix = [np.load(x) for x in glob.glob(f"{OUTPUT_PATH}/*.npy")]
-        if len(glob.glob(f"{OUTPUT_PATH}/*.csv")) > 0:
-            preds_matrix += [pd.read_csv(x).meter_reading.values for x in glob.glob(f"{OUTPUT_PATH}/*.csv")]
+        preds_matrix = [np.load(x) for x in FILES_TO_BLEND if ".npy" in x]
+        preds_matrix += [pd.read_csv(x).meter_reading.values for x in FILES_TO_BLEND if ".csv" in x]
         preds_matrix = np.vstack(preds_matrix).T
         preds_matrix[preds_matrix < 0] = 0
 
