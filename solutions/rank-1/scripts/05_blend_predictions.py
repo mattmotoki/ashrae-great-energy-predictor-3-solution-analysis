@@ -8,23 +8,24 @@ from ashrae.blenders import load_preds, GeneralizedMeanBlender
 from ashrae.utils import OUTPUT_PATH, load_data, rmsle, timer
 
 FILES_TO_BLEND = [
-    "cb-split_meter-no_normalization.npy", 
-    "cb-split_meter-target_normalization.npy", 
-    "cb-split_primary_use-no_normalization.npy", 
-    "cb-split_primary_use-target_normalization.npy", 
-    "cb-split_site-target_normalization.npy", 
-    "lgb-split_meter-no_normalization.npy", 
-    "lgb-split_meter-target_normalization.npy", 
-    "lgb-split_site-no_normalization.npy", 
-    "lgb-split_site-target_normalization.npy", 
-    "mlp-split_meter-no_normalization.npy", 
-    "mlp-split_meter-target_normalization.npy", 
-    "submission_meter.csv", 
-    "submission_kfold.csv", 
-    "submission_cleanup.csv", 
-    "submission_kernel_corrected_half_and_half.csv", 
-    "submission_kernel_ashrae_kfold_lightgbm_without_leak_1-08.csv", 
+    f"{OUTPUT_PATH}/cb-split_meter-no_normalization.npy", 
+    f"{OUTPUT_PATH}/cb-split_meter-target_normalization.npy", 
+    f"{OUTPUT_PATH}/cb-split_primary_use-no_normalization.npy", 
+    f"{OUTPUT_PATH}/cb-split_primary_use-target_normalization.npy", 
+    f"{OUTPUT_PATH}/cb-split_site-target_normalization.npy", 
+    f"{OUTPUT_PATH}/lgb-split_meter-no_normalization.npy", 
+    f"{OUTPUT_PATH}/lgb-split_meter-target_normalization.npy", 
+    f"{OUTPUT_PATH}/lgb-split_site-no_normalization.npy", 
+    f"{OUTPUT_PATH}/lgb-split_site-target_normalization.npy", 
+    f"{OUTPUT_PATH}/mlp-split_meter-no_normalization.npy", 
+    f"{OUTPUT_PATH}/mlp-split_meter-target_normalization.npy", 
+    f"{OUTPUT_PATH}/submission_meter.csv", 
+    f"{OUTPUT_PATH}/submission_kfold.csv", 
+    f"{OUTPUT_PATH}/submission_cleanup.csv", 
+    f"{OUTPUT_PATH}/submission_kernel_corrected_half_and_half.csv", 
+    f"{OUTPUT_PATH}/submission_kernel_ashrae_kfold_lightgbm_without_leak_1-08.csv", 
 ]
+
 
 if __name__ == "__main__":
     """
